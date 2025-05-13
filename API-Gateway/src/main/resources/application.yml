@@ -1,0 +1,41 @@
+# Configuration du serveur
+server:
+  port: 8888 # Port d'écoute de l'API Gateway
+
+# Configuration Spring
+spring:
+  application:
+    name: API-GATEWAY # Nom du service d'API Gateway dans Eureka
+  
+  cloud:
+    gateway:
+      routes:
+        # Route pour le service produit
+        - id: product-service # Identifiant unique de la route
+          uri: lb://PRODUCT-SERVICE # URI de redirection avec load balancing
+          predicates:
+            - Path=/products/** # Toutes les requêtes commençant par /products/ seront routées ici
+        
+        # Route pour le service catégorie
+        - id: category-service
+          uri: lb://CATEGORY-SERVICE
+          predicates:
+            - Path=/categories/** # Redirection des requêtes /categories/**
+        
+        # Route pour le service commande
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/commandes/** # Redirection des requêtes /orders/**
+        
+        # Route pour le service utilisateur
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/users/** # Redirection des requêtes /users/**
+
+# Configuration Eureka pour la découverte de services
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka # URL du serveur Eureka pour l'enregistrement et la découverte des microservices

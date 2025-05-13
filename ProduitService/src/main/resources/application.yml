@@ -1,0 +1,33 @@
+# Configuration du microservice PRODUCT-SERVICE
+server:
+  port: 8081  # Port d'écoute du microservice
+
+spring:
+  application:
+    name: PRODUCT-SERVICE  # Nom du service pour identification dans Eureka et Spring
+
+  # Configuration de la base de données PostgreSQL
+  datasource:
+    url: jdbc:postgresql://localhost:5432/productdb  # URL de connexion à la BDD
+    username: postgres  # Nom d'utilisateur PostgreSQL
+    password: passer  # Mot de passe PostgreSQL
+    driver-class-name: org.postgresql.Driver  # Driver JDBC pour PostgreSQL
+
+  # Configuration JPA/Hibernate
+  jpa:
+    hibernate:
+      ddl-auto: update  # Stratégie de mise à jour automatique du schéma BDD
+    show-sql: true  # Affiche les requêtes SQL dans les logs (utile pour le dev)
+
+# Configuration Eureka Client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka  # URL du serveur Eureka
+
+# Configuration SpringDoc OpenAPI (Swagger)
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html  # URL de l'interface Swagger UI
+  api-docs:
+    path: /v3/api-docs  # Endpoint pour les métadonnées OpenAPI

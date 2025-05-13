@@ -1,0 +1,14 @@
+# Configuration du serveur Eureka
+server:
+  port: 8761  # Port d'écoute du serveur Eureka (port par défaut)
+
+spring:
+  application:
+    name: EUREKA-SERVER  # Nom de l'application pour identification dans Spring
+
+eureka:
+  client:
+    register-with-eureka: false  # Désactive l'enregistrement automatique de ce serveur auprès d'autres instances Eureka
+    fetch-registry: false  # Empêche la récupération du registre des services depuis d'autres serveurs Eureka
+  server:
+    enable-self-preservation: false  # Désactive le mode d'auto-préservation (déconseillé en production)
