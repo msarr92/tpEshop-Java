@@ -14,7 +14,7 @@ spring:
         - id: product-service # Identifiant unique de la route
           uri: lb://PRODUCT-SERVICE # URI de redirection avec load balancing
           predicates:
-            - Path=/products/** # Toutes les requêtes commençant par /products/ seront routées ici
+            - Path=pg/products/** # Toutes les requêtes commençant par /products/ seront routées ici
         
         # Route pour le service catégorie
         - id: category-service

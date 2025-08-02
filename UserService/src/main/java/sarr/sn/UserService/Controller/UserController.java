@@ -10,24 +10,30 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    @Autowired
+
+    @Autowired  // Injection automatique du repository pour accede aux données utilisateurs
     private UserRepository userRepository;
 
+
+    // Récupère tous les utilisateurs GET /users
     @GetMapping
     public List<Users> getAllUsers() {
         return userRepository.findAll();
     }
 
+    // Récupère un utilisateur par son ID
     @GetMapping("/{id}")
     public Users getUserById(@PathVariable Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
+    // Crée un nouvel utilisateur
     @PostMapping
     public Users createUser(@RequestBody Users user) {
         return userRepository.save(user);
     }
 
+    // Met à jour un utilisateur existant ou le crée s’il n’existe pas
     @PutMapping("/{id}")
     public Users updateUser(@PathVariable Long id, @RequestBody Users user) {
         return userRepository.findById(id)
@@ -43,6 +49,7 @@ public class UserController {
                 });
     }
 
+    // Supprime un utilisateur
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
         userRepository.deleteById(id);
