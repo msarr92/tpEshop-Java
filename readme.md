@@ -27,8 +27,24 @@ Spring Data JPA
 
 
 
+
 Prérequis
 
 Java 17+
 Maven 3.6+
 IDE (IntelliJ, Eclipse, VS Code…)
+
+Voici quelque teste effectuer on a pris comme exemple le userService
+
+Liste des services 
+![img_1.png](img_1.png)
+Creer un utilisateur
+![img_2.png](img_2.png)
+Liste utilisateur
+![img_4.png](img_4.png)
+Recherche par utilisateur
+![img_5.png](img_5.png)
+Modifier un utilisateur
+![img_6.png](img_6.png)
+Supprimer un utilisateur
+![img_7.png](img_7.png)
